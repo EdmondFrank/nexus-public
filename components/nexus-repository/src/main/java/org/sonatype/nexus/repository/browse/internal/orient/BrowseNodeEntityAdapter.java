@@ -45,6 +45,7 @@ import com.orientechnologies.orient.core.metadata.schema.OClass.INDEX_TYPE;
 import com.orientechnologies.orient.core.metadata.schema.OType;
 import com.orientechnologies.orient.core.record.impl.ODocument;
 import com.orientechnologies.orient.core.sql.OCommandSQL;
+import com.orientechnologies.orient.core.collate.OCaseInsensitiveCollate;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.collect.Iterables.getFirst;
@@ -148,7 +149,7 @@ public class BrowseNodeEntityAdapter
     type.createProperty(P_REPOSITORY_NAME, OType.STRING).setMandatory(true).setNotNull(true);
     type.createProperty(P_FORMAT, OType.STRING).setMandatory(true).setNotNull(true);
     type.createProperty(P_PATH, OType.STRING).setMandatory(true).setNotNull(true);
-    type.createProperty(P_PARENT_PATH, OType.STRING).setMandatory(true).setNotNull(true);
+    type.createProperty(P_PARENT_PATH, OType.STRING).setCollate(new OCaseInsensitiveCollate()).setMandatory(true).setNotNull(true);
     type.createProperty(P_NAME, OType.STRING).setMandatory(true).setNotNull(true);
     type.createProperty(P_COMPONENT_ID, OType.LINK, componentEntityAdapter.getSchemaType());
     type.createProperty(P_ASSET_ID, OType.LINK, assetEntityAdapter.getSchemaType());
